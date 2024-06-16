@@ -268,7 +268,7 @@ void parse_avatar_characters(toml_table_t* characters, Character* cha){
         char* avatar_id = NULL;
         int64_t required_affection = 0;
         cha->avater_struct[j].avatar_id = NULL;
-        cha->avater_struct[j].required_affection = 0;
+        cha->avater_struct[j].required_affection = -10000;
         if(toml_rtos(toml_raw_in(avatar_parse, "avatar_id"), &avatar_id) == 0){
             cha->avater_struct[j].avatar_id = strdup(avatar_id);
         }
@@ -289,7 +289,7 @@ void parse_sprite_characters(toml_table_t* characters, Character* cha){
         char* sprite_id = NULL;
         int64_t required_affection = 0;
         cha->sprite_struct[j].sprite_id = NULL;
-        cha->sprite_struct[j].required_affection = 0;
+        cha->sprite_struct[j].required_affection = -10000;
         if(toml_rtos(toml_raw_in(sprite_parse, "sprite_id"), &sprite_id) == 0){
             cha->sprite_struct[j].sprite_id = strdup(sprite_id);
         }

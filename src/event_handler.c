@@ -207,6 +207,12 @@ void handle_option_buttons(SDL_Renderer *renderer, SDL_Event *event, GameState *
                 change_event = 1;
                 // strcpy(game_state->event, game_state->option1_event);
                 game_state->event = game_state->option1_event;
+                game_state->option1_affection_change = 0;
+                game_state->option2_affection_change = 0;
+                game_state->option3_affection_change = 0;
+                game_state->option1_required = 0;
+                game_state->option2_required = 0;
+                game_state->option3_required = 0;
             }
         } else if (x >= 350 && x <= 950 && y >= 300 && y <= 350 && game_state->have_choice) {
             play_sound(choice_effect);
@@ -239,6 +245,12 @@ void handle_option_buttons(SDL_Renderer *renderer, SDL_Event *event, GameState *
                 change_event = 1;
                 // strcpy(game_state->event, game_state->option2_event);
                 game_state->event = game_state->option2_event;
+                game_state->option1_affection_change = 0;
+                game_state->option2_affection_change = 0;
+                game_state->option3_affection_change = 0;
+                game_state->option1_required = 0;
+                game_state->option2_required = 0;
+                game_state->option3_required = 0;
             }
         } else if (x >= 350 && x <= 950 && y >= 400 && y <= 450 && game_state->have_choice) {
             play_sound(choice_effect);
@@ -271,6 +283,12 @@ void handle_option_buttons(SDL_Renderer *renderer, SDL_Event *event, GameState *
                 change_event = 1;
                 // strcpy(game_state->event, game_state->option3_event);
                 game_state->event = game_state->option3_event;
+                game_state->option1_affection_change = 0;
+                game_state->option2_affection_change = 0;
+                game_state->option3_affection_change = 0;
+                game_state->option1_required = 0;
+                game_state->option2_required = 0;
+                game_state->option3_required = 0;
             }
         }
         else if ( !game_state->have_choice ) {

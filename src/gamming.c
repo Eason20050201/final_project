@@ -164,11 +164,11 @@ void save_game(const char *filename, GameState *game_state) {
     fclose(file);
 }
 
-void load_game(const char *filename, GameState *game_state) {
+int load_game(const char *filename, GameState *game_state) {
     FILE *file = fopen(filename, "r");
     if (!file) {
         perror("Unable to open file for reading");
-        return;
+        return 1;
     }
 
     char line[256];
@@ -219,4 +219,5 @@ void load_game(const char *filename, GameState *game_state) {
     }
 
     fclose(file);
+    return 0;
 }

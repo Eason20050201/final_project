@@ -10,4 +10,4 @@ extern int is_continue;
 
 void search_event( GameState *game_state );
 void save_game(const char *filename, GameState *game_state);
-void load_game(const char *filename, GameState *game_state);
+int load_game(const char *filename, GameState *game_state);

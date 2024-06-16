@@ -37,11 +37,29 @@ void handle_events(SDL_Event *event, int *running, int *current_screen, SDL_Rend
                         render_game_screen(renderer, game_state);
                     } else if (y >= 600 && y <= 650) {
                         // continue game
-                        *current_screen = SCREEN_CONTINUE_GAME;
-                        is_continue = 2;
-                        load_game("record.txt", game_state);
-                        game_state->event = save_event_id;
-                        render_game_screen(renderer, game_state);
+                        if(load_game("record.txt", game_state) == 1) {
+                            *current_screen = SCREEN_NEW_GAME;
+
+                            int parsed = parse_toml("example-game/script.toml");
+                            if (parsed != 0) {
+                                fprintf(stderr, "Error parsing TOML file\n");
+                                return;
+                            }
+
+                            set_player_name(renderer, game_state->player_name, running);
+                            if( *running == 0 ) {
+                                return;
+                            }
+                            // new game
+                            game_state->event = "START";
+                            render_game_screen(renderer, game_state);
+                        }
+                        else {
+                            *current_screen = SCREEN_CONTINUE_GAME;
+                            is_continue = 2;
+                            game_state->event = save_event_id;
+                            render_game_screen(renderer, game_state);
+                        }
                     }
                 }
             } else if (*current_screen == SCREEN_GAME_LOOP) {

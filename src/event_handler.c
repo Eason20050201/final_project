@@ -64,6 +64,7 @@ void handle_events(SDL_Event *event, int *running, int *current_screen, SDL_Rend
                 }
             } else if (*current_screen == SCREEN_GAME_LOOP) {
                 if( strcmp(game_state->event, "END") == 0 ) {
+                    system("rm record.txt");
                     *current_screen = SCREEN_END;
                 }
                 if (x >= 25 && x <= 100 && y >= 20 && y <= 95) {
